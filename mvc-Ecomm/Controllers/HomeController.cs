@@ -4,10 +4,18 @@ namespace mvc_ecomm.Controllers
 {
     public class HomeController : Controller
     {
+        // TODO make those instead of making header inside the same website
+        //ViewBag.Header = "all";
+        //ViewBag.Header = "top";
+        //ViewBag.Header = "none";
+
         // GET: Home
         // GET: Home/Index
         public ActionResult Index()
-        { ViewBag.Title = "Home | E-Shopper"; return View(); }
+        {
+            ViewBag.Title = "Home | E-Shopper";
+            return View();
+        }
 
         // GET: Home/Cart
         public ActionResult Cart()
