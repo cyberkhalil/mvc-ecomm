@@ -1,30 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace mvc_Ecomm.Controllers
+namespace mvc_ecomm.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: Home
+        // GET: Home/Index
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult About()
+        // GET: Home/Blog
+        public ActionResult Blog()
         {
-            ViewBag.Message = "Your application description page.";
-
+            return View();
+        }
+        // GET: Home/BlogSingle
+        public ActionResult BlogSingle()
+        {
+            return View();
+        }
+        // GET: Home/Cart
+        public ActionResult Cart()
+        {
+            return View();
+        }
+        // GET: Home/Checkout
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+        // GET: Home/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+        // GET: Home/PageNotFound
+        public ActionResult PageNotFound()
+        {
+            return View();
+        }
+        // GET: Home/ProductDetails
+        public ActionResult ProductDetails()
+        {
+            return View();
+        }
+        // GET: Home/Shop
+        public ActionResult Shop()
+        {
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
