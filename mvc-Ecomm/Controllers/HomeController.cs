@@ -6,21 +6,24 @@ namespace mvc_ecomm.Controllers
     {
         // GET: Home
         // GET: Home/Index
-        public ActionResult Index() { return View(); }
+        public ActionResult Index()
+        { ViewBag.Title = "Home | E-Shopper"; return View(); }
 
         // GET: Home/Cart
-        public ActionResult Cart() { return View(); }
+        public ActionResult Cart()
+        { ViewBag.Title = "Cart | E-Shopper"; return View(); }
 
         // GET: Home/Checkout
-        public ActionResult Checkout() { return View(); }
+        public ActionResult Checkout()
+        { ViewBag.Title = "Checkout | E-Shopper"; return View(); }
 
         // GET: Home/Login
-        public ActionResult Login() { return View(); }
+        public ActionResult Login()
+        { ViewBag.Title = "Login | E-Shopper"; return View(); }
 
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-
             if (username == password) return Redirect("/Accounts/");
             else return View();
         }
@@ -29,16 +32,19 @@ namespace mvc_ecomm.Controllers
         public ActionResult Signup(string name, string username, string password)
         {
             // TODO create account.
-            return View("Login");
+            ViewBag.Title = "Login | E-Shopper"; return View("Login");
         }
 
         // GET: Home/PageNotFound
-        public ActionResult PageNotFound() { return View(); }
+        public ActionResult PageNotFound()
+        { ViewBag.Title = "PageNotFound | E-Shopper"; return View(); }
 
         // GET: Home/ProductDetails
-        public ActionResult ProductDetails() { return View(); }
+        public ActionResult ProductDetails()
+        { ViewBag.Title = "ProductDetails | E-Shopper"; return View(); }
 
         // GET: Home/Shop
-        public ActionResult Shop() { return View(); }
+        public ActionResult Shop()
+        { ViewBag.Title = "Shop | E-Shopper"; return View(); }
     }
 }
