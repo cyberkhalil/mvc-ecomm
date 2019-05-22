@@ -1,0 +1,60 @@
+﻿@model mvc_Ecomm.Models.Account
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Account</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Picture)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Full_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Full_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "AccountEdit", new { id = Model.Username })
+    </p>
+</body>
+</html>

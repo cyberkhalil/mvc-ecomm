@@ -16,7 +16,7 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Products
-        [Authorize]
+        
         public async Task<ActionResult> Index()
         {
             var products = db.Products.Include(p => p.Category1);
@@ -24,7 +24,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Details/5
-        [Authorize]
+        
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,7 +40,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Create
-        [Authorize]
+        
         public ActionResult Create()
         {
             ViewBag.Category = new SelectList(db.Categories, "Name", "Description");
@@ -52,7 +52,7 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public async Task<ActionResult> Create([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
         {
             if (ModelState.IsValid)
@@ -67,7 +67,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Edit/5
-        [Authorize]
+        
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,7 +88,7 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public async Task<ActionResult> Edit([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
         {
             if (ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Delete/5
-        [Authorize]
+        
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -120,7 +120,7 @@ namespace mvc_Ecomm.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Product product = await db.Products.FindAsync(id);

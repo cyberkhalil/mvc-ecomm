@@ -39,7 +39,7 @@ namespace mvc_ecomm.Controllers
             if (user.Password == password)
             {if(user.Role =="Admin")
                     return Redirect("/Accounts/Index");
-            else return Redirect("/Accounts/Details/"+user.Username);
+            else return Redirect("/Accounts/AccountDetails/"+user.Username);
             }
               
             else 
