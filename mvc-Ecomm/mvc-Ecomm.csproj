@@ -210,6 +210,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Accounts\AccountDetails.cshtml" />
     <Content Include="Views\Accounts\AccountEdit.cshtml" />
+    <Content Include="Views\Accounts\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
