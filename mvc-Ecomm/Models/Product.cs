@@ -13,18 +13,16 @@ namespace mvc_Ecomm.Models
         public int Id { get; set; }
 
         [Column(TypeName = "image")]
-        [Required]
         public byte[] Picture { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Category { get; set; }
+        public int Category { get; set; }
 
         public virtual Category Category1 { get; set; }
     }

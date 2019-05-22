@@ -1,8 +1,13 @@
-﻿using mvc_Ecomm.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using mvc_Ecomm.Models;
 
 namespace mvc_Ecomm.Controllers
 {
@@ -11,19 +16,19 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Accounts
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Accounts.ToList());
+            return View(await db.Accounts.ToListAsync());
         }
 
         // GET: Accounts/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = await db.Accounts.FindAsync(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -42,12 +47,12 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Picture,Username,Password,Full_Name,Balance,isAdmin")] Account account)
+        public async Task<ActionResult> Create([Bind(Include = "Username,Picture,Password,Full_Name,Balance,Role")] Account account)
         {
             if (ModelState.IsValid)
             {
                 db.Accounts.Add(account);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -55,13 +60,13 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = await db.Accounts.FindAsync(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -74,25 +79,25 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Picture,Username,Password,Full_Name,Balance,isAdmin")] Account account)
+        public async Task<ActionResult> Edit([Bind(Include = "Username,Picture,Password,Full_Name,Balance,Role")] Account account)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(account).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(account);
         }
 
         // GET: Accounts/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = await db.Accounts.FindAsync(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -103,11 +108,11 @@ namespace mvc_Ecomm.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Account account = db.Accounts.Find(id);
+            Account account = await db.Accounts.FindAsync(id);
             db.Accounts.Remove(account);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

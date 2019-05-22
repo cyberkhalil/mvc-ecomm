@@ -27,6 +27,10 @@ namespace mvc_Ecomm.Models
                 .WithRequired(e => e.Category1)
                 .HasForeignKey(e => e.Category)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Name)
+                .IsFixedLength();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,19 +16,19 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Categories
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Categories.ToList());
+            return View(await db.Categories.ToListAsync());
         }
 
         // GET: Categories/Details/5
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = await db.Categories.FindAsync(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -46,12 +47,12 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Description")] Category category)
+        public async Task<ActionResult> Create([Bind(Include = "Name,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +60,13 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Categories/Edit/5
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = await db.Categories.FindAsync(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -78,25 +79,25 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,Description")] Category category)
+        public async Task<ActionResult> Edit([Bind(Include = "Name,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(category);
         }
 
         // GET: Categories/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = await db.Categories.FindAsync(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -107,11 +108,11 @@ namespace mvc_Ecomm.Controllers
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Category category = db.Categories.Find(id);
+            Category category = await db.Categories.FindAsync(id);
             db.Categories.Remove(category);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,20 +16,20 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Products
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var products = db.Products.Include(p => p.Category1);
-            return View(products.ToList());
+            return View(await products.ToListAsync());
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -48,12 +49,12 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -62,13 +63,13 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -82,12 +83,12 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Picture,Name,Description,Category")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Category = new SelectList(db.Categories, "Name", "Description", product.Category);
@@ -95,13 +96,13 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -112,11 +113,11 @@ namespace mvc_Ecomm.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             db.Products.Remove(product);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

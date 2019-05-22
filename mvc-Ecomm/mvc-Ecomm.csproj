@@ -148,9 +148,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
+    <Content Include="App_Data\MyDB.mdf" />
+    <Content Include="App_Data\MyDB_log.ldf">
+      <DependentUpon>MyDB.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -192,6 +192,7 @@
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\Home\ProductDetails.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
+    <Content Include="Views\Shared\HomeLayout.cshtml" />
     <Content Include="Views\Accounts\Create.cshtml" />
     <Content Include="Views\Accounts\Delete.cshtml" />
     <Content Include="Views\Accounts\Details.cshtml" />
@@ -207,7 +208,6 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Shared\HomeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

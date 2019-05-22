@@ -1,72 +1,72 @@
 ﻿@model mvc_Ecomm.Models.Account
 
 @{
-    ViewBag.Title = "Delete";
+    Layout = null;
 }
 
-<h2>Delete</h2>
+<!DOCTYPE html>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Picture)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Full_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Full_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.isAdmin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isAdmin)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Account</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Picture)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Full_Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Full_Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

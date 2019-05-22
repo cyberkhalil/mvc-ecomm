@@ -9,22 +9,17 @@ namespace mvc_Ecomm.Models
     [Table("Account")]
     public partial class Account
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
-
-        [Column(TypeName = "image")]
-        [Required]
-        public byte[] Picture { get; set; }
-
-        [Required]
+        [Key]
         [StringLength(50)]
         public string Username { get; set; }
+
+        [Column(TypeName = "image")]
+        public byte[] Picture { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Password { get; set; }
 
-        [Column("Full Name")]
         [Required]
         [StringLength(150)]
         public string Full_Name { get; set; }
@@ -32,6 +27,8 @@ namespace mvc_Ecomm.Models
         [Column(TypeName = "money")]
         public decimal Balance { get; set; }
 
-        public bool isAdmin { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Role { get; set; }
     }
 }
