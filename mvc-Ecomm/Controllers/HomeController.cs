@@ -32,8 +32,9 @@ namespace mvc_ecomm.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            if (username == password) return Redirect("/Accounts/");
-            else return View();
+            //if (username == password) return Redirect("/Accounts/");
+            //else 
+            return View();
         }
 
         [HttpPost]
