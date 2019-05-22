@@ -132,5 +132,11 @@ namespace mvc_Ecomm.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult ShowImage(string id)
+        {
+            var acc = db.Accounts.Find(id);
+            var image = acc.Picture;
+            return File(image, "image/jpg");
+        }
     }
 }
