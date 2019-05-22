@@ -16,7 +16,7 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Picture)
+                <img src='@Url.Action("ShowImage", new { id = Model.Username})' />
             </dd>
     
             <dt>
