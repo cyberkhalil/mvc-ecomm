@@ -22,6 +22,12 @@ namespace mvc_Ecomm.Controllers
             return View(await db.Accounts.ToListAsync());
         }
 
+        //Profile 
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
         // GET: Accounts/Details/5
         public async Task<ActionResult> AccountDetails(string id)
         {
