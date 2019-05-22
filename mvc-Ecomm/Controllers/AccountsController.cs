@@ -16,6 +16,7 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Accounts
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             return View(await db.Accounts.ToListAsync());
@@ -37,6 +38,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Accounts/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +62,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Accounts/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,6 +82,7 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> Edit([Bind(Include = "Username,Picture,Password,Full_Name,Balance,Role")] Account account)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Accounts/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -108,6 +113,7 @@ namespace mvc_Ecomm.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             Account account = await db.Accounts.FindAsync(id);

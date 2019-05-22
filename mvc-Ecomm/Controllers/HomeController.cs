@@ -1,9 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using mvc_Ecomm.Models;
+using System.Web.Mvc;
 
 namespace mvc_ecomm.Controllers
 {
     public class HomeController : Controller
     {
+        private Model1 db = new Model1();
         // TODO make those instead of making header inside the same website
         //ViewBag.Header = "all";
         //ViewBag.Header = "top";
@@ -32,9 +34,15 @@ namespace mvc_ecomm.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-
-            //if (username == password) return Redirect("/Accounts/");
-            //else 
+            Account user = db.Accounts.Find(username);
+            
+            if (user.Password == password)
+            {if(user.Role =="Admin")
+                    return Redirect("/Accounts/Index");
+            else return Redirect("/Accounts/Details/"+user.Username);
+            }
+              
+            else 
             return View();
         }
 

@@ -16,12 +16,14 @@ namespace mvc_Ecomm.Controllers
         private Model1 db = new Model1();
 
         // GET: Categories
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             return View(await db.Categories.ToListAsync());
         }
 
         // GET: Categories/Details/5
+        [Authorize]
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +50,7 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> Create([Bind(Include = "Name,Description")] Category category)
         {
             if (ModelState.IsValid)
@@ -60,6 +64,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,6 +84,7 @@ namespace mvc_Ecomm.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> Edit([Bind(Include = "Name,Description")] Category category)
         {
             if (ModelState.IsValid)
@@ -91,6 +97,7 @@ namespace mvc_Ecomm.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -108,6 +115,7 @@ namespace mvc_Ecomm.Controllers
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             Category category = await db.Categories.FindAsync(id);
